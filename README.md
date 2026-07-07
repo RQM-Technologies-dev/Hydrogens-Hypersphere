@@ -15,26 +15,29 @@ Hydrogen Bridge v1 shows that hydrogen shell architecture can be represented cle
 Hydrogen bound-state shell architecture is naturally represented by scalar harmonics on S³.
 
 ## Core result
-\[
+$$
 -\Delta_{S^3}Y_K = K(K+2)Y_K
-\]
-\[
+$$
+
+$$
 \hat N = \sqrt{-\Delta_{S^3}+1},\qquad \hat N Y_K = (K+1)Y_K
-\]
-\[
+$$
+
+$$
 n = K+1,\qquad \dim\mathcal H_K(S^3) = (K+1)^2 = n^2
-\]
-\[
+$$
+
+$$
 H_C = -\frac{\mathrm{Ry}}{-\Delta_{S^3}+1},\qquad H_C\Psi=E\Psi,\qquad E_n=-\frac{\mathrm{Ry}}{n^2}
-\]
+$$
 
 ## Why this matters
 Interpreted geometrically, Hydrogen Bridge v1 treats the observed hydrogen shell architecture as the 3D/angular projection of an S^3 resonance shell.
 
 - The ordinary hydrogen shell number appears as an S^3 spectral shell number.
 - The same shell number controls both the energy denominator and the pre-spin shell degeneracy.
-- The clean operator \(H_C=-\mathrm{Ry}/(-\Delta_{S^3}+1)\) is much simpler than the optional modeling stack.
-- The angular bridge \(\Pi_K^{\mathrm{ang}}\) maps S^3 shell content to standard hydrogen angular labels.
+- The clean operator $H_C=-\mathrm{Ry}/(-\Delta_{S^3}+1)$ is much simpler than the optional modeling stack.
+- The angular bridge $\Pi_K^{\mathrm{ang}}$ maps S^3 shell content to standard hydrogen angular labels.
 - The repository includes executable tests and generated reports.
 
 ## What is implemented
@@ -43,13 +46,13 @@ Interpreted geometrically, Hydrogen Bridge v1 treats the observed hydrogen shell
 - clean S^3 spectral equation (`notes/native_s3_spectral_hydrogen_equation.md`)
 - S^3 scalar harmonic shell architecture (`notes/s3_scalar_harmonic_shell_architecture.md`)
 - shell table and energy helper (`simulator/hydrogen_shell_simulator.py`)
-- low-K numerical \(\Pi_K^{\mathrm{ang}}\) angular bridge and diagnostics (`notes/pi_k_angular_intertwiner.md`, `simulator/s3_s2_intertwiner.py`)
+- low-K numerical $\Pi_K^{\mathrm{ang}}$ angular bridge and diagnostics (`notes/pi_k_angular_intertwiner.md`, `simulator/s3_s2_intertwiner.py`)
 - claims matrix (`docs/claims_matrix.md`)
 
 ### Validation
 - NIST ASD spectral comparison (`simulator/spectral_comparison.py`, `data/hydrogen_reference_lines.csv`)
 - shell-locking numerical diagnostic (`simulator/shell_locking_test.py`)
-- \(\Pi_K^{\mathrm{ang}}\) L² compatibility diagnostics and rank-1 angular transition-operator diagnostics (`simulator/angular_operators.py`, `reports/pi_k_l2_diagnostics.csv`, `reports/rank1_transition_diagnostics.csv`)
+- $\Pi_K^{\mathrm{ang}}$ L² compatibility diagnostics and rank-1 angular transition-operator diagnostics (`simulator/angular_operators.py`, `reports/pi_k_l2_diagnostics.csv`, `reports/rank1_transition_diagnostics.csv`)
 - report generation (`scripts/generate_reports.py`)
 - tests/CI (`tests/`, `.github/workflows/ci.yml`)
 
@@ -60,10 +63,10 @@ Interpreted geometrically, Hydrogen Bridge v1 treats the observed hydrogen shell
 
 ## What this repository does not claim
 - no first-principles Rydberg-constant derivation
-- no derivation of \(\kappa\), electric charge, or Maxwell equations
+- no derivation of $\kappa$, electric charge, or Maxwell equations
 - no full Schrödinger-Coulomb solution derivation
 - no native fine-structure derivation yet
-- no complete physical unitary \(\Pi_K\) operator yet
+- no complete physical unitary $\Pi_K$ operator yet
 
 ## Start here
 1. `docs/director_summary.md`
