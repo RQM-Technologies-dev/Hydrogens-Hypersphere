@@ -1,6 +1,10 @@
 cff-version: 1.2.0
-title: "Hydrogen Bridge v1"
-message: "If you use this repository, please cite it as Hydrogen Bridge v1 by RQM Technologies LLC."
+title: "Hydrogen S^3 Representation"
+message: "If you use this repository, please cite it as Hydrogen S^3 Representation by RQM Technologies LLC."
 type: software
+abstract: "Executable Python implementation of the standard S^3/SO(4) representation-theoretic organization of nonrelativistic hydrogen bound-state shells. The package reproduces shell labels, pre-spin n^2 degeneracy, and branching into ordinary angular-momentum sectors; its energy function packages the conventional Rydberg shell law without deriving it."
 authors:
   - name: "RQM Technologies LLC"
+version: "0.2.0"
+repository-code: "https://github.com/RQM-Technologies-dev/Hydrogens-Hypersphere"
+license: "MIT"

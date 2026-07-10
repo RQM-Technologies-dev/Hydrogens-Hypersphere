@@ -1,117 +1,92 @@
-[![Hydrogen Bridge v1 CI](https://github.com/RQM-Technologies-dev/Hydrogen/actions/workflows/ci.yml/badge.svg)](https://github.com/RQM-Technologies-dev/Hydrogen/actions/workflows/ci.yml)
+# Hydrogen S^3 Representation
 
-# Hydrogen Bridge v1
+[![CI](https://github.com/RQM-Technologies-dev/Hydrogens-Hypersphere/actions/workflows/ci.yml/badge.svg)](https://github.com/RQM-Technologies-dev/Hydrogens-Hypersphere/actions/workflows/ci.yml)
 
-## Better Coordinates for Better Measurement
+This repository provides an executable implementation of the standard S^3/SO(4)
+representation-theoretic organization of nonrelativistic hydrogen bound-state
+shells. It reproduces shell labels, pre-spin n^2 degeneracy, and branching into
+ordinary angular-momentum sectors.
 
-This project uses quaternions because they preserve more of what physical systems are doing: phase, rotation, orientation, polarization, and coherence. Standard complex-number methods are powerful, but they can flatten these relationships too early. Quaternionic coordinates keep them together as one structured object, giving software a richer view of the measured system.
+The project does not derive the Coulomb interaction, the Rydberg constant,
+charge, Maxwell's equations, radial hydrogen wavefunctions, fine structure, or
+new hydrogen physics. Its spectral energy function is a calibrated packaging of
+the conventional E_n = -Ry/n^2 shell law.
 
-For RQM Technologies, better coordinates mean better measurement: more informative diagnostics, cleaner transformations, and more precise control across quantum, wave, sensing, imaging, and communications workflows.
+## Mathematical Core
 
-## One-sentence claim
-Hydrogen Bridge v1 shows that hydrogen shell architecture can be represented cleanly by scalar harmonics on S^3, with the shifted S^3 Laplacian producing the principal shell number, n^2 degeneracy, and the calibrated Rydberg energy denominator.
+The retained construction is shell-level:
 
-## Central public claim
-Hydrogen bound-state shell architecture is naturally represented by scalar harmonics on S³.
+- scalar S^3 shell eigenvalues `K(K+2)`;
+- shifted eigenvalues `(K+1)^2`;
+- principal labels `n = K + 1`;
+- shell dimensions `(K+1)^2 = n^2`;
+- representation organization `H_K(S^3) ~= V_j tensor V_j*`, with `j = K/2`;
+- branching into `direct sum_{ell=0}^{K} V_ell`.
 
-## Core result
-$$
--\Delta_{S^3}Y_K = K(K+2)Y_K
-$$
+The package constructs the branching transform `U_K` using SymPy
+Clebsch-Gordan coefficients and verifies it against independently constructed
+source and target angular-momentum generators.
 
-$$
-\hat N = \sqrt{-\Delta_{S^3}+1},\qquad \hat N Y_K = (K+1)Y_K
-$$
+## What Is Implemented
 
-$$
-n = K+1,\qquad \dim\mathcal H_K(S^3) = (K+1)^2 = n^2
-$$
+- `hydrogen_s3.spectrum`: S^3 shell identities and calibrated Rydberg shell energies.
+- `hydrogen_s3.angular_momentum`: finite-dimensional spin matrices for integer and half-integer `j`.
+- `hydrogen_s3.clebsch_gordan`: cached exact-wrapper access to SymPy Clebsch-Gordan coefficients.
+- `hydrogen_s3.branching`: shell-wise unitary branching transform and diagnostics.
+- `hydrogen_s3.angular_tensors`: angular Wigner-Eckart factors with explicit reduced matrix elements.
+- `hydrogen_s3.reference_spectroscopy`: conventional Rydberg baseline with air/vacuum medium handling.
 
-$$
-H_C = -\frac{\mathrm{Ry}}{-\Delta_{S^3}+1},\qquad H_C\Psi=E\Psi,\qquad E_n=-\frac{\mathrm{Ry}}{n^2}
-$$
+## What Is Not Claimed
 
-## Why this matters
-Interpreted geometrically, Hydrogen Bridge v1 treats the observed hydrogen shell architecture as the 3D/angular projection of an S^3 resonance shell.
+This repository does not claim novelty for hydrogen's S^3/SO(4) organization.
+It does not implement the full Pauli/Fock hydrogen construction, physical
+measure, momentum-space stereographic transform, inverse transform, radial
+Coulomb wavefunctions, oscillator strengths, fine structure, or experimental
+predictions.
 
-- The ordinary hydrogen shell number appears as an S^3 spectral shell number.
-- The same shell number controls both the energy denominator and the pre-spin shell degeneracy.
-- The clean operator $H_C=-\mathrm{Ry}/(-\Delta_{S^3}+1)$ is much simpler than the optional modeling stack.
-- The angular bridge $\Pi_K^{\mathrm{ang}}$ maps S^3 shell content to standard hydrogen angular labels.
-- The repository includes executable tests and generated reports.
+The branching transform is a unitary representation transform, not a physical
+spatial projection.
 
-## What is implemented
+See [docs/scope_and_claims.md](docs/scope_and_claims.md) for the full scope
+matrix.
 
-### Core
-- clean S^3 spectral equation (`notes/native_s3_spectral_hydrogen_equation.md`)
-- S^3 scalar harmonic shell architecture (`notes/s3_scalar_harmonic_shell_architecture.md`)
-- shell table and energy helper (`simulator/hydrogen_shell_simulator.py`)
-- low-K numerical $\Pi_K^{\mathrm{ang}}$ angular bridge and diagnostics (`notes/pi_k_angular_intertwiner.md`, `simulator/s3_s2_intertwiner.py`)
-- claims matrix (`docs/claims_matrix.md`)
+## Prior-Art Notice
 
-### Validation
-- NIST ASD spectral comparison (`simulator/spectral_comparison.py`, `data/hydrogen_reference_lines.csv`)
-- shell-locking numerical diagnostic (`simulator/shell_locking_test.py`)
-- $\Pi_K^{\mathrm{ang}}$ L² compatibility diagnostics and rank-1 angular transition-operator diagnostics (`simulator/angular_operators.py`, `reports/pi_k_l2_diagnostics.csv`, `reports/rank1_transition_diagnostics.csv`)
-- report generation (`scripts/generate_reports.py`)
-- tests/CI (`tests/`, `.github/workflows/ci.yml`)
+Hydrogen's hidden SO(4) degeneracy and S^3/hyperspherical descriptions have
+historical precedent, including Pauli's algebraic treatment and Fock's 1935
+momentum-space formulation. This project is a reproducible software
+organization of the shell-level representation structure.
 
-### Appendices/support
-- closure-action support (`notes/appendix_b_closure_geometry_inverse_square_action.md`)
-- Hopf flux projection support (`notes/appendix_c_hopf_flux_projection_and_coulomb_field.md`)
-- fine-structure benchmark (`simulator/fine_structure.py`, `reports/h_alpha_fine_structure.csv`)
+See [docs/prior_art.md](docs/prior_art.md).
 
-## What this repository does not claim
-- no first-principles Rydberg-constant derivation
-- no derivation of $\kappa$, electric charge, or Maxwell equations
-- no full Schrödinger-Coulomb solution derivation
-- no native fine-structure derivation yet
-- no complete physical unitary $\Pi_K$ operator yet
+## Installation
 
-## Start here
-1. `docs/director_summary.md`
-2. `notes/s3_scalar_harmonic_shell_architecture.md`
-3. `notes/native_s3_spectral_hydrogen_equation.md`
-4. `notes/pi_k_angular_intertwiner.md`
-5. `docs/claims_matrix.md`
-6. `reports/HYDROGEN_BRIDGE_V1_REPORT.md`
-
-For appendices and support layers, see `notes/layer_separation.md`.
-
-## Reviewer map
-
-### Core reviewer path
-- `docs/director_summary.md`
-- `notes/s3_scalar_harmonic_shell_architecture.md`
-- `notes/native_s3_spectral_hydrogen_equation.md`
-- `notes/pi_k_angular_intertwiner.md`
-- `docs/claims_matrix.md`
-
-### Validation artifacts
-- `reports/HYDROGEN_BRIDGE_V1_REPORT.md`
-- `reports/shell_table.csv`
-- `reports/angular_state_counts.csv`
-- `reports/series_comparison.csv`
-- `reports/shell_locking_validation.csv`
-
-### Appendices/support
-- `notes/layer_separation.md`
-- `notes/appendix_coulomb_action_to_s3_operator.md`
-- `notes/appendix_b_closure_geometry_inverse_square_action.md`
-- `notes/appendix_c_hopf_flux_projection_and_coulomb_field.md`
-
-## Quickstart
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
-pytest
-python scripts/generate_reports.py
-python scripts/generate_plots.py
+python -m pip install -e ".[dev]"
 ```
 
-## Continuous Integration
-The CI workflow runs tests and regenerates reports on pushes to `main` and pull requests targeting `main`.
+Python 3.10 or newer is required.
 
-## License
-This repository is licensed under the MIT License. See [`LICENSE`](LICENSE).
+## Quickstart
+
+```python
+from hydrogen_s3.branching import branching_diagnostics
+from hydrogen_s3.spectrum import angular_labels, calibrated_spectral_energy_from_K
+
+print(angular_labels(2))
+print(calibrated_spectral_energy_from_K(2))
+print(branching_diagnostics(2))
+```
+
+## Testing and Reports
+
+```bash
+ruff check .
+ruff format --check .
+mypy src
+pytest -q
+python -m build
+python scripts/generate_report.py
+```
+
+The report is generated under `build/reports/` and is not committed.
