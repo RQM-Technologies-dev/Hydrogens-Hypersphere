@@ -77,4 +77,4 @@ def casimir(j: int | float) -> ComplexMatrix:
     x = jx(j)
     y = jy(j)
     z = jz(j)
-    return (x @ x + y @ y + z @ z).astype(np.complex128)
+    return np.asarray(x @ x + y @ y + z @ z, dtype=np.complex128)

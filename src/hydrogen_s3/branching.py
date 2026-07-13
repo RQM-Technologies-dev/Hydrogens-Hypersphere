@@ -111,7 +111,10 @@ def source_casimir(K: int) -> ComplexMatrix:
     """Return source J^2 from independently constructed source generators."""
 
     generators = source_generators(K)
-    return generators["x"] @ generators["x"] + generators["y"] @ generators["y"] + generators["z"] @ generators["z"]
+    return np.asarray(
+        generators["x"] @ generators["x"] + generators["y"] @ generators["y"] + generators["z"] @ generators["z"],
+        dtype=np.complex128,
+    )
 
 
 def target_casimir(K: int) -> ComplexMatrix:

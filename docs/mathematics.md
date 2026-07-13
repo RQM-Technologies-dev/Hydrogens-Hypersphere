@@ -46,3 +46,7 @@ U_K J_a_source U_K^dagger ~= J_a_target.
 
 This is a representation transform. It is not treated as an experimentally
 derived spatial projection or measurement map.
+
+The full Coulomb bound-state derivation, including normalized coordinate
+representatives for these abstract shell states, is given in
+[`fock_bound_state_construction.md`](fock_bound_state_construction.md).

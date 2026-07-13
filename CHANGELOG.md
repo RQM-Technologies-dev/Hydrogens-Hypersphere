@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+- Added the complete standard nonrelativistic spinless Coulomb bound-state Fock chain under `hydrogen_s3.fock`.
+- Added convention-explicit stereographic geometry, normalized `S^3` harmonics, Coulomb operator diagonalization, spectrum derivation, normalized momentum states, inverse Hankel reconstruction, and fixed-shell SO(4) generators.
+- Added deterministic focused validation for geometry, harmonics, kernel eigenvalues, quantization, low hydrogen states, inverse transforms, and branching-compatible SO(4) algebra.
+- Extended report generation with Fock diagnostics and machine-readable JSON.
+- Updated scientific scope and historical attribution; continuum, relativistic, spin, QED, and many-electron physics remain outside scope.
+
 ## 0.2.0
 
 - Corrected the scientific scope to a narrow implementation of the standard S^3/SO(4) shell-level organization of nonrelativistic hydrogen bound states.

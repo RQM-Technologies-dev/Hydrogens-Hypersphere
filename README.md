@@ -1,92 +1,51 @@
-# Hydrogen S^3 Representation
+# Hydrogen Fock S^3 Bound States
 
 [![CI](https://github.com/RQM-Technologies-dev/Hydrogens-Hypersphere/actions/workflows/ci.yml/badge.svg)](https://github.com/RQM-Technologies-dev/Hydrogens-Hypersphere/actions/workflows/ci.yml)
 
-This repository provides an executable implementation of the standard S^3/SO(4)
-representation-theoretic organization of nonrelativistic hydrogen bound-state
-shells. It reproduces shell labels, pre-spin n^2 degeneracy, and branching into
-ordinary angular-momentum sectors.
+This repository implements the standard nonrelativistic, spinless, bound-state Fock construction of the hydrogen atom. Starting from the Coulomb Hamiltonian, it derives the unitary-convention momentum integral equation, compactifies each negative-energy momentum space on an energy-dependent unit `S^3`, diagonalizes the Coulomb operator with normalized hyperspherical harmonics, derives the hydrogen spectrum, reconstructs normalized momentum states and ordinary associated-Laguerre radial orbitals, and verifies the fixed-shell `SO(4)` algebra.
 
-The project does not derive the Coulomb interaction, the Rydberg constant,
-charge, Maxwell's equations, radial hydrogen wavefunctions, fine structure, or
-new hydrogen physics. Its spectral energy function is a calibrated packaging of
-the conventional E_n = -Ry/n^2 shell law.
-
-## Mathematical Core
-
-The retained construction is shell-level:
-
-- scalar S^3 shell eigenvalues `K(K+2)`;
-- shifted eigenvalues `(K+1)^2`;
-- principal labels `n = K + 1`;
-- shell dimensions `(K+1)^2 = n^2`;
-- representation organization `H_K(S^3) ~= V_j tensor V_j*`, with `j = K/2`;
-- branching into `direct sum_{ell=0}^{K} V_ell`.
-
-The package constructs the branching transform `U_K` using SymPy
-Clebsch-Gordan coefficients and verifies it against independently constructed
-source and target angular-momentum generators.
-
-## What Is Implemented
-
-- `hydrogen_s3.spectrum`: S^3 shell identities and calibrated Rydberg shell energies.
-- `hydrogen_s3.angular_momentum`: finite-dimensional spin matrices for integer and half-integer `j`.
-- `hydrogen_s3.clebsch_gordan`: cached exact-wrapper access to SymPy Clebsch-Gordan coefficients.
-- `hydrogen_s3.branching`: shell-wise unitary branching transform and diagnostics.
-- `hydrogen_s3.angular_tensors`: angular Wigner-Eckart factors with explicit reduced matrix elements.
-- `hydrogen_s3.reference_spectroscopy`: conventional Rydberg baseline with air/vacuum medium handling.
-
-## What Is Not Claimed
-
-This repository does not claim novelty for hydrogen's S^3/SO(4) organization.
-It does not implement the full Pauli/Fock hydrogen construction, physical
-measure, momentum-space stereographic transform, inverse transform, radial
-Coulomb wavefunctions, oscillator strengths, fine structure, or experimental
-predictions.
-
-The branching transform is a unitary representation transform, not a physical
-spatial projection.
-
-See [docs/scope_and_claims.md](docs/scope_and_claims.md) for the full scope
-matrix.
-
-## Prior-Art Notice
-
-Hydrogen's hidden SO(4) degeneracy and S^3/hyperspherical descriptions have
-historical precedent, including Pauli's algebraic treatment and Fock's 1935
-momentum-space formulation. This project is a reproducible software
-organization of the shell-level representation structure.
-
-See [docs/prior_art.md](docs/prior_art.md).
-
-## Installation
-
-```bash
-python -m pip install -e ".[dev]"
-```
-
-Python 3.10 or newer is required.
+The implementation supports atomic units and physical SI parameters with the electron-proton reduced mass. The legacy shell, branching, angular-tensor, and spectroscopy APIs remain available.
 
 ## Quickstart
 
 ```python
-from hydrogen_s3.branching import branching_diagnostics
-from hydrogen_s3.spectrum import angular_labels, calibrated_spectral_energy_from_K
+import numpy as np
 
-print(angular_labels(2))
-print(calibrated_spectral_energy_from_K(2))
-print(branching_diagnostics(2))
+from hydrogen_s3.fock import CoulombSystem, momentum_wavefunction, quantization_from_fock
+
+system = CoulombSystem.atomic_units()
+state = quantization_from_fock(K=1, system=system)
+phi_210 = momentum_wavefunction(2, 1, 0, np.array([0.1, 0.2, 0.3]), system)
+print(state.kappa, state.energy, phi_210)
 ```
 
-## Testing and Reports
+The focused implementation lives in `hydrogen_s3.fock`:
+
+- conventions and Coulomb systems;
+- stereographic geometry, measure, and chord identity;
+- normalized complex `S^3` harmonics;
+- Coulomb/Fock operators and quantization;
+- normalized momentum and position radial states;
+- inverse spherical-Bessel transforms;
+- fixed-shell angular-momentum/Runge-Lenz generators;
+- deterministic diagnostics and generated Markdown/JSON reports.
+
+See [docs/fock_bound_state_construction.md](docs/fock_bound_state_construction.md) for the convention reconciliation and full derivation, [docs/scope_and_claims.md](docs/scope_and_claims.md) for the claim matrix, and [docs/prior_art.md](docs/prior_art.md) for historical attribution.
+
+## Scope
+
+Fock's `S^3` is an energy-dependent compactification of momentum space. It is not evidence for an extra physical spatial dimension or a quaternion-valued physical wavefunction, and this standard construction was not invented by RQM Technologies. Continuum/scattering states, relativity, spin, fine structure, the Lamb shift, QED, external fields, and many-electron atoms are outside scope.
+
+## Development
 
 ```bash
+python -m pip install -e ".[dev]"
 ruff check .
 ruff format --check .
 mypy src
 pytest -q
-python -m build
 python scripts/generate_report.py
+python -m build
 ```
 
-The report is generated under `build/reports/` and is not committed.
+Reports are written under `build/reports/` and are not committed.

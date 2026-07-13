@@ -4,12 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hydrogen-s3"
-version = "0.2.0"
-description = "S^3/SO(4) representation organization of nonrelativistic hydrogen shells"
+version = "0.3.0"
+description = "Fock S^3 construction of nonrelativistic hydrogen bound states"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
   "numpy",
+  "scipy",
   "sympy",
 ]
 
@@ -52,4 +53,8 @@ warn_redundant_casts = true
 
 [[tool.mypy.overrides]]
 module = ["sympy", "sympy.physics.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["scipy", "scipy.*"]
 ignore_missing_imports = true
