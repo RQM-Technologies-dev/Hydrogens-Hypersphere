@@ -6,6 +6,14 @@ This repository implements the standard nonrelativistic, spinless, bound-state F
 
 The implementation supports atomic units and physical SI parameters with the electron-proton reduced mass. The legacy shell, branching, angular-tensor, and spectroscopy APIs remain available.
 
+## Canon v2 boundary
+
+Fock's hydrogen hypersphere is established standard momentum-space geometry.
+It is **not AGQF**, does not use an anchor potential, does not require
+`s^2=2n`, and is not evidence of an additional physical spatial dimension.
+The principal quantum number and spectrum follow from the conventional Coulomb
+eigenproblem. See [RQM_TECHNICAL_CANON_V2.md](RQM_TECHNICAL_CANON_V2.md).
+
 ## Quickstart
 
 ```python
