@@ -2,6 +2,9 @@ import math
 
 import numpy as np
 
+
+_trapezoid = getattr(np, "trapezoid", np.trapz)
+
 from simulator.hydrogen_shell_simulator import RYDBERG_EV
 
 
@@ -37,12 +40,12 @@ def solve_shell_locking_sector(
     evals, evecs = np.linalg.eigh(h)
     psi0 = evecs[:, 0]
     prob = psi0**2
-    norm = np.trapezoid(prob, s)
+    norm = _trapezoid(prob, s)
     prob = prob / norm
 
     x = 0.5 * s**2
-    expectation_x = np.trapezoid(x * prob, s)
-    expectation_x2 = np.trapezoid((x**2) * prob, s)
+    expectation_x = _trapezoid(x * prob, s)
+    expectation_x2 = _trapezoid((x**2) * prob, s)
     variance_x = expectation_x2 - expectation_x**2
 
     target_x = float(K + 1)
