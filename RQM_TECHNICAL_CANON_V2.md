@@ -1,18 +1,17 @@
 # RQM Technical Canon v2 Alignment
 
-Hydrogen Bridge v1 is retained as tested standard-compatible spectral
-bookkeeping and historical bridge software.
+This repository is the canonical software treatment of Vladimir Fock's
+standard momentum-space hydrogen hypersphere.
 
-The identity `-Delta_S3 + 1 = n²` on shell `K=n-1` and dimension `(K+1)²`
-are established harmonic facts. Pairing them with `-Ry/n²` does not derive the
-Rydberg scale or the Coulomb Hamiltonian from geometry.
-
-Vladimir Fock's hydrogen hypersphere is the energy-dependent momentum-space
-compactification of the conventional Coulomb eigenproblem. It is implemented
-in `Hydrogens-Hypersphere`; it is not AGQF and does not require `s²=2n`.
-
-This repository makes no claim of AGQF confinement, physical `S³ x R`
-dynamics, a new spatial dimension, or alternative quantum mechanics.
+- Each negative-energy Coulomb problem is compactified on an energy-dependent
+  `S^3`.
+- The construction organizes conventional bound states through
+  hyperspherical harmonics and `O(4)` symmetry.
+- It is not AGQF, an anchor-well model, or `S^3 x R` physical dynamics.
+- It does not require `s^2=2n`.
+- It is not evidence for a new physical spatial dimension.
+- Its contribution is tested software, convention reconciliation, and
+  exposition of established physics.
 
 Evidence authority:
 `RQM-Technologies-dev/rqm-experiments/docs/RQM_TECHNICAL_CANON_V2.md`.
