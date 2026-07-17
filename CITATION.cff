@@ -1,6 +1,10 @@
 cff-version: 1.2.0
-title: "Hydrogen Bridge v1"
-message: "If you use this repository, please cite it as Hydrogen Bridge v1 by RQM Technologies LLC."
+title: "Hydrogen Fock S^3 Bound States"
+message: "If you use this repository, please cite it as Hydrogen Fock S^3 Bound States by RQM Technologies LLC."
 type: software
+abstract: "Convention-explicit Python implementation of the standard nonrelativistic spinless Coulomb bound-state Fock construction, including momentum-space stereographic compactification, normalized hyperspherical harmonics, spectrum derivation, momentum and position eigenfunctions, and fixed-shell SO(4) symmetry."
 authors:
   - name: "RQM Technologies LLC"
+version: "0.3.0"
+repository-code: "https://github.com/RQM-Technologies-dev/Hydrogens-Hypersphere"
+license: "MIT"

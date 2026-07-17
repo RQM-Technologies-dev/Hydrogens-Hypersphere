@@ -3,24 +3,58 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hydrogen-bridge-v1"
-version = "0.1.0"
-description = "Calibrated Hydrogen Bridge v1 simulator and reports"
+name = "hydrogen-s3"
+version = "0.3.0"
+description = "Fock S^3 construction of nonrelativistic hydrogen bound states"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
   "numpy",
-  "matplotlib",
+  "scipy",
+  "sympy",
 ]
 
 [project.optional-dependencies]
+plot = [
+  "matplotlib",
+]
 dev = [
+  "build",
+  "mypy",
   "pytest",
+  "pytest-cov",
+  "ruff",
 ]
 
-[tool.setuptools]
-packages = ["simulator"]
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hydrogen_s3 = ["data/*.csv", "data/*.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+packages = ["hydrogen_s3"]
+strict = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+
+[[tool.mypy.overrides]]
+module = ["sympy", "sympy.physics.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["scipy", "scipy.*"]
+ignore_missing_imports = true
