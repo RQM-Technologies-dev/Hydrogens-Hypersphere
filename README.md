@@ -2,17 +2,22 @@
 
 # Hydrogen Bridge v1
 
-## Better Coordinates for Better Measurement
+## RQM Technical Canon v2
 
-This project uses quaternions because they preserve more of what physical systems are doing: phase, rotation, orientation, polarization, and coherence. Standard complex-number methods are powerful, but they can flatten these relationships too early. Quaternionic coordinates keep them together as one structured object, giving software a richer view of the measured system.
-
-For RQM Technologies, better coordinates mean better measurement: more informative diagnostics, cleaner transformations, and more precise control across quantum, wave, sensing, imaging, and communications workflows.
+This repository is a standard-compatible hydrogen spectral benchmark and
+historical bridge implementation. Its `S³` shell identities are established
+harmonic mathematics, and its physical energy scale is calibrated from the
+conventional Rydberg law. It does not establish new hydrogen physics. See
+[RQM_TECHNICAL_CANON_V2.md](RQM_TECHNICAL_CANON_V2.md).
 
 ## One-sentence claim
-Hydrogen Bridge v1 shows that hydrogen shell architecture can be represented cleanly by scalar harmonics on S^3, with the shifted S^3 Laplacian producing the principal shell number, n^2 degeneracy, and the calibrated Rydberg energy denominator.
+Hydrogen Bridge v1 implements a tested `S³` harmonic organization whose shell
+labels reproduce the conventional principal-number and degeneracy identities
+when paired with the calibrated Rydberg energy law.
 
 ## Central public claim
-Hydrogen bound-state shell architecture is naturally represented by scalar harmonics on S³.
+Scalar harmonics on `S³` provide a standard-compatible computational
+organization of the conventional hydrogen shell labels.
 
 ## Core result
 \[
@@ -29,11 +34,14 @@ H_C = -\frac{\mathrm{Ry}}{-\Delta_{S^3}+1},\qquad H_C\Psi=E\Psi,\qquad E_n=-\fra
 \]
 
 ## Why this matters
-Interpreted geometrically, Hydrogen Bridge v1 treats the observed hydrogen shell architecture as the 3D/angular projection of an S^3 resonance shell.
+Hydrogen Bridge v1 provides executable spectral bookkeeping and diagnostics
+for `S³` harmonic shell identities.
 
 - The ordinary hydrogen shell number appears as an S^3 spectral shell number.
 - The same shell number controls both the energy denominator and the pre-spin shell degeneracy.
-- The clean operator \(H_C=-\mathrm{Ry}/(-\Delta_{S^3}+1)\) is much simpler than the optional modeling stack.
+- The calibrated operator \(H_C=-\mathrm{Ry}/(-\Delta_{S^3}+1)\) is a compact
+  reparameterization of the conventional `-Ry/n²` law, not a derivation of it
+  from geometry alone.
 - The angular bridge \(\Pi_K^{\mathrm{ang}}\) maps S^3 shell content to standard hydrogen angular labels.
 - The repository includes executable tests and generated reports.
 
@@ -64,6 +72,17 @@ Interpreted geometrically, Hydrogen Bridge v1 treats the observed hydrogen shell
 - no full Schrödinger-Coulomb solution derivation
 - no native fine-structure derivation yet
 - no complete physical unitary \(\Pi_K\) operator yet
+- no AGQF, anchor-well, or physical-slice derivation
+- no requirement that physical space has an additional `S³` dimension
+- no replacement for the conventional Coulomb eigenproblem
+
+## Relationship to Fock hydrogen
+
+Vladimir Fock's standard construction compactifies momentum space on an
+energy-dependent `S³` and derives the Coulomb spectrum from the conventional
+integral eigenproblem. That full construction is implemented in the sibling
+`Hydrogens-Hypersphere` repository. Fock hydrogen is not AGQF and does not
+require `s²=2n`.
 
 ## Start here
 1. `docs/director_summary.md`

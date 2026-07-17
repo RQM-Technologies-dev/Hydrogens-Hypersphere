@@ -11,9 +11,11 @@ def test_anchor_note_exists_and_contains_required_phrases():
     assert "Honesty boundary" in text
 
 
-def test_claims_matrix_contains_public_anchor_claim():
+def test_claims_matrix_contains_canon_v2_hydrogen_boundary():
     text = Path("docs/claims_matrix.md").read_text(encoding="utf-8")
-    assert "Hydrogen shell architecture on S³" in text
+    assert "Hydrogen shell labels organized on S³" in text
+    assert "Standard-compatible" in text
+    assert "not Fock's derivation" in text
 
 
 def test_readme_contains_central_public_claim_section():

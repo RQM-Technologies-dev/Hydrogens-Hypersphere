@@ -1,10 +1,16 @@
 # Hydrogen Bridge v1 — Director Summary
 
 ## Core claim
-Hydrogen Bridge v1 is a calibrated spectral-geometric bridge: hydrogen shell architecture is represented by scalar harmonics on \(S^3\), with one shell number controlling principal shell index, degeneracy, and calibrated energy denominator.
+Hydrogen Bridge v1 is a calibrated, standard-compatible spectral bookkeeping
+layer: scalar harmonics on \(S^3\) reproduce familiar shell-number and
+degeneracy identities, while the physical energy denominator is supplied by
+the conventional Rydberg law.
 
 ## Interpretation
-In this bridge, hydrogen's known shell architecture can be read as a projected S^3 / 4D resonance structure: one compact shell resonance controls the observable principal shell number, pre-spin degeneracy, and calibrated energy denominator.
+The `S³` basis is a useful mathematical organization, not evidence that
+hydrogen occupies a new physical fourth spatial dimension. The shifted
+Laplacian identity rewrites the conventional shell ladder; it does not derive
+the Rydberg scale from geometry.
 
 ## Clean equation
 \[
@@ -35,9 +41,14 @@ E_n=-\frac{\mathrm{Ry}}{n^2}
 - No full Schrödinger-Coulomb solution derivation.
 - No native fine-structure derivation.
 - No completed physical unitary \(\Pi_K\) construction yet.
+- No AGQF or anchor-well mechanism.
+- No physical `S³ x R` slice dynamics.
+- No replacement for Fock's conventional momentum-space Coulomb construction.
 
 ## Why it matters
-The bridge yields a compact, falsifiable architecture where shell number, degeneracy, and calibrated energy denominator are unified by a single shifted \(S^3\) Laplacian structure, with executable evidence and explicit honesty boundaries.
+The bridge yields a compact tested implementation of shell-number, degeneracy,
+projection, and calibrated-energy bookkeeping with explicit honesty
+boundaries.
 
 ## Next technical milestones
 1. Extend angular operator bridge beyond hydrogen labels: radial amplitudes, oscillator strengths, and higher-K stability.
