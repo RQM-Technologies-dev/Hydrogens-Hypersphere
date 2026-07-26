@@ -7,4 +7,4 @@ authors:
   - name: "RQM Technologies LLC"
 version: "0.3.0"
 repository-code: "https://github.com/RQM-Technologies-dev/Hydrogens-Hypersphere"
-license: "MIT"
+license: "Apache-2.0"
