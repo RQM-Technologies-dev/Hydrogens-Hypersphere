@@ -110,13 +110,13 @@ def compare_radial_reconstruction(
         raise ValueError("r must be a strictly increasing one-dimensional grid")
     reconstructed = inverse_hankel_radial(n, ell, radius, active, tolerance=tolerance)
     analytic = analytic_position_radial(n, ell, radius, active)
-    overlap = np.trapz(np.conj(reconstructed) * analytic * radius**2, radius)
+    overlap = complex(np.trapezoid(np.conj(reconstructed) * analytic * radius**2, radius))
     phase = complex(overlap / abs(overlap)) if abs(overlap) > 0.0 else 1.0 + 0.0j
     aligned = reconstructed * phase
     difference = aligned - analytic
-    reference_norm = float(np.trapz(np.abs(analytic) ** 2 * radius**2, radius))
-    reconstructed_norm = float(np.trapz(np.abs(reconstructed) ** 2 * radius**2, radius))
-    relative = sqrt(float(np.trapz(np.abs(difference) ** 2 * radius**2, radius)) / reference_norm)
+    reference_norm = float(np.trapezoid(np.abs(analytic) ** 2 * radius**2, radius))
+    reconstructed_norm = float(np.trapezoid(np.abs(reconstructed) ** 2 * radius**2, radius))
+    relative = sqrt(float(np.trapezoid(np.abs(difference) ** 2 * radius**2, radius)) / reference_norm)
     return RadialComparison(
         max_absolute_error=float(np.max(np.abs(difference))),
         relative_l2_error=relative,

@@ -10,10 +10,14 @@ from __future__ import annotations
 import csv
 from dataclasses import dataclass
 from importlib.resources import files
-from importlib.resources.abc import Traversable
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from hydrogen_s3.spectrum import vacuum_transition_wavelength_nm
+
+if TYPE_CHECKING:
+    # importlib.resources.abc only exists on Python 3.11+; it is needed for annotations only.
+    from importlib.resources.abc import Traversable
 
 REFERENCE_DATA_RESOURCE = files("hydrogen_s3").joinpath("data", "hydrogen_reference_lines.csv")
 
