@@ -8,12 +8,17 @@ are suppressed rather than mixing air and vacuum conventions.
 from __future__ import annotations
 
 import csv
+import sys
 from dataclasses import dataclass
 from importlib.resources import files
-from importlib.resources.abc import Traversable
 from pathlib import Path
 
 from hydrogen_s3.spectrum import vacuum_transition_wavelength_nm
+
+if sys.version_info >= (3, 11):
+    from importlib.resources.abc import Traversable
+else:
+    from importlib.abc import Traversable
 
 REFERENCE_DATA_RESOURCE = files("hydrogen_s3").joinpath("data", "hydrogen_reference_lines.csv")
 
